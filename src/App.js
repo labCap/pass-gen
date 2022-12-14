@@ -13,7 +13,7 @@ function App() {
     for (let i = 0; i < length; i++) {
       pass.push(arrPassEl[Math.floor(Math.random() * arrPassEl.length)]);
     }
-    x;
+
     return pass.join("");
   };
 
@@ -26,23 +26,24 @@ function App() {
 
   return (
     <main>
-      <div className="text">
-        {pass === "" ? "Your password will appear here" : pass}
-      </div>
+      <div className="text">{pass}</div>
       <form className="form" onSubmit={(e) => handleSubmit(e, userLength)}>
-        <label htmlFor="password-length" className="label-range">
-          {userLength}
-        </label>
-        <input
-          type="range"
-          className="input-range"
-          id="password-length"
-          value={userLength}
-          step={1}
-          min={6}
-          max={100}
-          onChange={(e) => setUserLength(e.target.value)}
-        />
+        <div className="box-range">
+          <p>Choose the number of characters for the password</p>
+          <label htmlFor="password-length" className="label-range">
+            {userLength}
+          </label>
+          <input
+            type="range"
+            className="input-range"
+            id="password-length"
+            value={userLength}
+            step={1}
+            min={6}
+            max={100}
+            onChange={(e) => setUserLength(e.target.value)}
+          />
+        </div>
 
         <button>Generate</button>
       </form>
